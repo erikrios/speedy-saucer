@@ -6,14 +6,11 @@
 [node name="Level1" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = -100
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_kt7j4")
 stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_qnyxb")]
-position = Vector2(756, 192)
-
-[node name="Player2" parent="." instance=ExtResource("2_qnyxb")]
-position = Vector2(431, 195)
-gravity_scale = 1.0
+position = Vector2(546, 337)

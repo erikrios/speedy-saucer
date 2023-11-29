@@ -1,25 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://0u7rtoiphotx"]
+[gd_scene load_steps=7 format=3 uid="uid://0u7rtoiphotx"]
 
 [ext_resource type="Texture2D" uid="uid://ddbh3vjr4ihqu" path="res://assets/purple.png" id="1_kt7j4"]
 [ext_resource type="Script" path="res://level.gd" id="1_nbn4o"]
 [ext_resource type="PackedScene" uid="uid://rvmdoryg2j3m" path="res://player.tscn" id="2_qnyxb"]
 [ext_resource type="PackedScene" uid="uid://d2bglu1pj76vn" path="res://maze.tscn" id="3_ndlp5"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_hrjke"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3v8j"]
+font_size = 24
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_nbn4o")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Graphics" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
+layer = -10
+
+[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
 z_index = -100
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_kt7j4")
 stretch_mode = 1
+
+[node name="StartLabel" type="Label" parent="Graphics"]
+z_index = -25
+offset_left = 114.0
+offset_top = 14.0
+offset_right = 209.0
+offset_bottom = 62.0
+text = "START"
+label_settings = SubResource("LabelSettings_hrjke")
+
+[node name="EndLabel" type="Label" parent="Graphics"]
+z_index = -25
+offset_left = 366.0
+offset_top = -199.0
+offset_right = 461.0
+offset_bottom = -151.0
+text = "END"
+label_settings = SubResource("LabelSettings_hrjke")
+
+[node name="TutorialLabel" type="Label" parent="Graphics"]
+z_index = -25
+offset_left = -416.0
+offset_top = 4.0
+offset_right = 23.0
+offset_bottom = 196.0
+text = "Rules:
+- Use arrow keys or WASD to move
+- Go from the start to the end
+- You will go back to the start if you go
+outside of the maze!"
+label_settings = SubResource("LabelSettings_m3v8j")
 
 [node name="Maze" parent="." instance=ExtResource("3_ndlp5")]
 z_index = -50
 position = Vector2(180, 210)
 
 [node name="Player" parent="." instance=ExtResource("2_qnyxb")]
-position = Vector2(152, 72)
+position = Vector2(155, 87)
 
 [connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]

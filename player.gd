@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-const force := 100
+const force := 500
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_right"):
@@ -11,4 +11,4 @@ func _physics_process(delta: float) -> void:
 		apply_force(Vector2(0, -force))
 	if Input.is_action_pressed("move_down"):
 		apply_force(Vector2(0, force))
-	
+

@@ -21,3 +21,5 @@ position = Vector2(180, 210)
 
 [node name="Player" parent="." instance=ExtResource("2_qnyxb")]
 position = Vector2(152, 72)
+
+[connection signal="body_exited" from="Maze" to="." method="_on_maze_body_exited"]
